@@ -1,6 +1,6 @@
 import scrapy
 
-from scrapy_twitter import TwitterStreamFilterRequest, to_item
+from scrapy_twitter.scrapy_twitter import TwitterStreamFilterRequest, to_item
 
 class StreamFilterSpider(scrapy.Spider):
     name = "stream-filter"
