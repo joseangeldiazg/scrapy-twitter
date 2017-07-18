@@ -21,7 +21,7 @@ USER_AGENT = 'joseangeldiazg'
 #USER_AGENT = 'scrapy_twitter (+http://www.yourdomain.com)'
 
 DOWNLOADER_MIDDLEWARES = {
-    'scrapy_twitter.TwitterDownloaderMiddleware': 10,
+    'scrapy_twitter.twitterutils.TwitterDownloaderMiddleware': 10,
 }
 TWITTER_CONSUMER_KEY        = '2iYBlp5TjDd9drmIHXrXzOihR'
 TWITTER_CONSUMER_SECRET     = 'DqVsRLdcJfcjBuszvaC9OmoBK1LBZp9K9wOhw9uIHomLdSwUyE'
