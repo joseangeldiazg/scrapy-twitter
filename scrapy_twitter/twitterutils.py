@@ -11,7 +11,7 @@ class TwitterStreamFilterRequest(Request):
 
     def __init__(self, *args, **kwargs):
         self.track = kwargs.pop('track', None)
-        super(TwitterStreamFilterRequest, self).__init__(url='http://twitter.com', method='GET')
+        super(TwitterStreamFilterRequest, self).__init__(url='http://twitter.com', method='GET', **kwargs)
 
 class TwitterResponse(Response):
 
@@ -48,7 +48,6 @@ class TwitterDownloaderMiddleware(object):
                    access_token_secret)
 
     def process_request(self, request, spider):
-
 
         if isinstance(request, TwitterStreamFilterRequest):
             tweets = self.api.GetStreamFilter(track=request.track)
