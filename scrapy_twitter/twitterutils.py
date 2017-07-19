@@ -20,8 +20,9 @@ class TwitterStreamFilterRequest(Request):
 
     def __init__(self, *args, **kwargs):
         self.track = kwargs.pop('track', None)
-        super(TwitterStreamFilterRequest, self).__init__('http://twitter.com', **kwargs)
-
+        super(TwitterStreamFilterRequest, self).__init__('http://twitter.com',
+                                              *args,
+                                              **kwargs)
 
 class TwitterResponse(Response):
 
