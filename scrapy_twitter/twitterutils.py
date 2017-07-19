@@ -6,22 +6,12 @@ from scrapy.http import Request, Response
 import twitter
 
 
-class TwitterUserTimelineRequest(Request):
-
-    def __init__(self, *args, **kwargs):
-        self.screen_name = kwargs.pop('screen_name', None)
-        self.count = kwargs.pop('count', None)
-        self.max_id = kwargs.pop('max_id', None)
-        super(TwitterUserTimelineRequest, self).__init__('http://twitter.com',
-                                                         **kwargs)
-
 
 class TwitterStreamFilterRequest(Request):
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, **kwargs):
         self.track = kwargs.pop('track', None)
         super(TwitterStreamFilterRequest, self).__init__('http://twitter.com',
-                                              *args,
                                               **kwargs)
 
 class TwitterResponse(Response):
@@ -60,11 +50,6 @@ class TwitterDownloaderMiddleware(object):
 
     def process_request(self, request, spider):
 
-        if isinstance(request, TwitterUserTimelineRequest):
-            tweets = self.api.GetUserTimeline(screen_name=request.screen_name,
-                                              count=request.count,
-                                              max_id=request.max_id)
-            return TwitterResponse(tweets=[tweet.AsDict() for tweet in tweets])
 
         if isinstance(request, TwitterStreamFilterRequest):
             tweets = self.api.GetStreamFilter(track=request.track)
