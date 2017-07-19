@@ -12,14 +12,16 @@ class TwitterUserTimelineRequest(Request):
         self.screen_name = kwargs.pop('screen_name', None)
         self.count = kwargs.pop('count', None)
         self.max_id = kwargs.pop('max_id', None)
-        super(TwitterUserTimelineRequest, self).__init__(url='http://twitter.com')
+        super(TwitterUserTimelineRequest, self).__init__(url='http://twitter.com',
+                                                         dont_filter=True)
 
 
 class TwitterStreamFilterRequest(Request):
 
     def __init__(self, **kwargs):
         self.track = kwargs.pop('track', None)
-        super(TwitterStreamFilterRequest, self).__init__(url='http://twitter.com')
+        super(TwitterStreamFilterRequest, self).__init__(url='http://twitter.com',
+                                                         dont_filter=True)
 
 
 class TwitterResponse(Response):
