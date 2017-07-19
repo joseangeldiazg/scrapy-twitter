@@ -9,7 +9,7 @@ class StreamFilterSpider(scrapy.Spider):
     def __init__(self, track = None, *args, **kwargs):
         if not track:
             raise scrapy.exceptions.CloseSpider('Argument track not set.')
-        super(StreamFilterSpider, self).__init__(**kwargs)
+        super(StreamFilterSpider, self).__init__(*args, **kwargs)
         self.track = track.split(',')
 
     def start_requests(self):
