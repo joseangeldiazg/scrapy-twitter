@@ -13,7 +13,7 @@ class StreamFilterSpider(scrapy.Spider):
         self.track = track.split(',')
 
     def start_requests(self):
-        return [ TwitterStreamFilterRequest(track = self.track) ]
+        return [ TwitterStreamFilterRequest(track = self.track ) ]
 
     def parse(self, response):
         for tweet in response.tweets:

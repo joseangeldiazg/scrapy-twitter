@@ -9,10 +9,9 @@ import twitter
 
 class TwitterStreamFilterRequest(Request):
 
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.track = kwargs.pop('track', None)
-        super(TwitterStreamFilterRequest, self).__init__('http://twitter.com',
-                                              **kwargs)
+        super(TwitterStreamFilterRequest, self).__init__(url='http://twitter.com', method='GET')
 
 class TwitterResponse(Response):
 
